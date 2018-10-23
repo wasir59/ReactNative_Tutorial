@@ -4,13 +4,10 @@ import {View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 class CustomButton extends Component {
 	render() {
-		const { text, onPress} = this.props;
+		const { text,onPress} = this.props;
 		return (
 			<View style = {styles.view_row}>
- 				<TouchableOpacity style={styles.buttonStyle}>
-					 <Text style={styles.textStyle}>{text}</Text>
-		 	 </TouchableOpacity>
-				<TouchableOpacity style={styles.buttonStyle}>
+ 				<TouchableOpacity style={styles.buttonStyle} onPress = {() => onPress()}>
 					 <Text style={styles.textStyle}>{text}</Text>
 		 	 </TouchableOpacity>
 			</View>
@@ -19,7 +16,8 @@ class CustomButton extends Component {
 }
 
 CustomButton.propTypes = {
-  text: PropTypes.string.isRequired
+	text: PropTypes.string.isRequired,
+	onPress: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -30,15 +28,19 @@ const styles = StyleSheet.create({
 		flexDirection: 'row'
   },
   textStyle: {
-    fontSize:20,
+  fontSize:13,
 	color: '#ffffff',
 	textAlign: 'center'
   },
   
   buttonStyle: {
-	padding:10,
-	backgroundColor: '#202646',
-	borderRadius:5
+		backgroundColor: "blue",
+		paddingLeft: 20,
+		marginTop:10,
+		paddingRight:20,
+		paddingTop:5,
+		paddingBottom:10,
+		borderRadius: 10
   }
 });
 
